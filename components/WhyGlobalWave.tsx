@@ -7,7 +7,7 @@ function WhyGlobalWave() {
         >
 
 
-            <div className='mt-10 lg:mt-38 lg:pl-26'>
+            <div className='sm:mt-14 mt-19 lg:mt-38 lg:pl-26'>
 
 
                 <h1 className='text-xl lg:text-4xl  text-left mb-4 font-bold  text-white '>Whatever Your Freight Forwarding And Customs Clearance Needs, You’ve Come To The Right Place!</h1> 
