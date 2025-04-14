@@ -42,7 +42,7 @@ function Experienced() {
       <h2 className="text-2xl lg:text-3xl font-roboto font-bold mb-4">
         Experienced Freight Shipping & Contract Logistics Company.
       </h2>
-      <p className="text-gray-700 text-sm lg:text-base font-roboto leading-40">
+      <p className="text-gray-700 text-sm lg:text-base font-roboto leading-10">
         After many years of providing freight solutions to businesses, Global Wave Logistics have become
         one of the UK’s most experienced shipping and logistics companies. With each member of the Global
         Wave Logistics team having vast knowledge of the industry, we can ensure the seamless delivery of
