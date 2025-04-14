@@ -1,5 +1,6 @@
 import CarlineUp from '@/components/CarlineUp'
 import Experienced from '@/components/Experienced'
+import Icons from '@/components/Icons'
 import OurServices from '@/components/OurServices'
 import TypesOfServices from '@/components/TypesOfServices'
 import WhyGlobalWave from '@/components/WhyGlobalWave'
@@ -11,10 +12,15 @@ function Home() {
 
       <Experienced />
 
-      <OurServices />
-      <TypesOfServices />
-
+      <div className='relative mb-[600px]'>
+        <OurServices />
+        <div className='absolute inset-0 top-[500px] z-30'>
+        <TypesOfServices />
+        </div>
+      </div>
       <CarlineUp />
+
+      <Icons />
 
       <WhyGlobalWave />
 
