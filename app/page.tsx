@@ -12,7 +12,7 @@ function Home() {
 
       <Experienced />
 
-      <div className='relative mb-[1800px] lg:mb-[600px]'>
+      <div className='relative sm:mb-[1800px] lg:mb-[600px]'>
         <OurServices />
         <div className='absolute inset-0 top-[500px] z-30'>
         <TypesOfServices />
