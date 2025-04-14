@@ -3,7 +3,7 @@ import React from 'react'
 
 function Experienced() {
   return (
-    <section className="w-full flex flex-col lg:flex-row items-start justify-between px-6 lg:px-20 py-10 bg-white">
+    <section className="w-full flex flex-col-reverse gap-8 lg:gap-0 lg:flex-row items-start justify-between px-6 lg:px-20 py-10 bg-white">
     {/* Left Side */}
     <div className="w-full lg:w-1/2">
       <div className="relative w-full h-[300px] lg:h-[350px]">
