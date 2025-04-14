@@ -6,7 +6,7 @@ config.autoAddCss = false;
 
 function TypesOfServices() {
   return (
-    <div className='lg:mx-16 px-6 lg:px-32 py-10 bg-gray-300'>
+    <div className='mx-3 lg:mx-16 px-6 lg:px-32 py-10 bg-gray-300'>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-16'>
             <div className='flex flex-col lg:flex-row items-center lg:items-start gap-4'>

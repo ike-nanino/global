@@ -11,7 +11,7 @@ function Icons() {
 
       <div className='text-center mb-10 px-6 lg:px-16'>
 
-        <h1 className='text-7xl font-bold font-rajdhani mb-4'>Why Choose Global Wave Logistics</h1>
+        <h1 className='text-2xl lg:text-7xl font-bold font-rajdhani mb-4'>Why Choose Global Wave Logistics</h1>
         <p className='text-lg font-poppins'>As your logistics partner, we will take the time to understand your requirements, pain points and goals, allowing us to deliver a tailored solution that relieves the hassle of logistics and allows you to focus on the things that matter most to your business. </p>
         <p className='text-lg font-poppins'>You’ll enjoy an efficient, professional service, along with door-to-door solutions to any location worldwide.
 
