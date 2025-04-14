@@ -38,7 +38,7 @@ const links = [
 function NavBar() {
     const pathname = usePathname();
     return (
-        <nav className="flex items-center gap-8 text-xl">
+        <nav className="hidden lg:flex items-center gap-8 text-xl">
 
             {
                 links.map((link, index) => {
