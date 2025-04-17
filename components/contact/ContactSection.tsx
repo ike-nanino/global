@@ -6,13 +6,13 @@ import { Textarea } from "../ui/textarea"
 
 function ContactSection() {
   return (
-    <div className="w-full relative flex flex-col-reverse gap-8 lg:gap-0 lg:flex-row items-start justify-between px-6 lg:px-20 py-10">
+    <div className="w-full relative flex flex-col gap-8 lg:gap-0 lg:flex-row items-start justify-between px-6 lg:px-20 py-10">
     {/* Left Side */}
     <div className="w-full lg:w-1/2">
     <div>
-        <h1 className='mb-8 text-2xl lg:text-4xl'>Message Us</h1>
+        <h1 className='mb-8 text-3xl md:text-6xl font-bold'>Message Us</h1>
 
-        <p className='text-base lg:text-lg'>Get in touch with Global Wave Logistics and our specialists will tailor a very competitive quote to meet your requirements.</p>
+        <p className='text-base lg:text-xl mb-8'>Get in touch with Global Wave Logistics and our specialists will tailor a very competitive quote to meet your requirements.</p>
 
     </div>
 

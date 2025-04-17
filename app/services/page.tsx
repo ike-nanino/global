@@ -175,7 +175,7 @@ function Services() {
                 <div className='border-t border-t-gray-100 flex flex-col gap-8 lg:flex-row py-10'>
                     <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
                         <h2 className="text-2xl lg:text-3xl font-roboto font-bold mb-4">
-                            Air Freight
+                        Road & Rail Distribution
                         </h2>
                         <p className="text-gray-700 text-sm lg:text-base font-roboto leading-10">
                             We offer a comprehensive network of road services including full load, part load and groupage. Insurance is available on all road freight. We can also arrange transport of bulk by rail if required within the UK from all ports including Liverpool and Felixstowe. However if you would like to rail within the EU, we can also arrange that to all destinations across Europe.

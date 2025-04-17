@@ -1,7 +1,12 @@
 import ContactSection from '@/components/contact/ContactSection'
-import { Phone, PhoneCall } from 'lucide-react'
+import { PhoneCall } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelopeOpen} from '@fortawesome/free-solid-svg-icons'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 
 function Contact() {
     return (
@@ -28,7 +33,7 @@ function Contact() {
 
 
 
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 px-20 py-15'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 lg:px-20 py-15'>
                 <div className='p-10 shadow-md'>
                     <div className='relative w-14 h-14'>
                         <Image
@@ -39,13 +44,13 @@ function Contact() {
                         />
                     </div>
 
-                    <h1>United Kingdom</h1>
-                    <p>1 Solly Street, Sheffield <br />
+                    <h1 className='font-bold'>United Kingdom</h1>
+                    <p className='text-base mb-3'>1 Solly Street, Sheffield <br />
                         South Yorkshire</p>
 
-                    <div className='flex items-center gap-2'>
-                        <PhoneCall />
-                        <p>+44 075 9577 5501</p>
+                    <div className='flex items-center gap-4'>
+                        <PhoneCall className='text-blue-600' />
+                        <p className='font-semibold'>+44 075 9577 5501</p>
                     </div>
 
                 </div>
@@ -58,23 +63,24 @@ function Contact() {
                             src="/images/usaflag.jpg"
                             alt='L'
                             fill
-                            className="object-contain"
+                            className="object-contain mb-2"
                         />
                     </div>
-                    <h1>United State Of America</h1>
-                    <p>2207 Martha Street <br /> Prescott Arizona</p>
+                    <h1 className='font-bold mb-2'>United State Of America</h1>
+                    <p className='text-base mb-3'>2207 Martha Street <br /> Prescott Arizona</p>
 
-                    <div className='flex items-center gap-2'>
-                        <PhoneCall />
-                        <p>+44 075 9577 5501</p>
+                    <div className='flex items-center gap-4'>
+                        <PhoneCall className='text-blue-600' />
+                        <p className='font-semibold'>+1 928 776 2974</p>
                     </div>
 
                 </div>
 
                 <div className='p-10 shadow-md'>
-                    <h1>Mail Us</h1>
-                    <p>info@globalwavelogistics.com</p>
-                    <p>tracking@globalwavelogistics.com</p>
+                    <FontAwesomeIcon icon={faEnvelopeOpen} className='text-4xl mb-3 text-blue-400' />
+                    <h1 className='font-bold mb-2'>Mail Us</h1>
+                    <p className='text-base mb-1'> info@globalwavelogistics.com</p>
+                    <p className='text-base'>tracking@globalwavelogistics.com</p>
                 </div>
 
 
