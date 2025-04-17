@@ -21,7 +21,7 @@ function Services() {
                         className="absolute inset-0 flex flex-col items-center justify-center text-white p-4"
                         data-aos="fade-up"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center ">
+                        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center font-raleway ">
                             Delivering Your Dreams <br /> Worldwide
                         </h1>
                     </div>
@@ -49,13 +49,13 @@ function Services() {
 
                 {/* Right Side */}
                 <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
-                    <h2 className="text-2xl lg:text-3xl font-roboto font-bold mb-4">
+                    <h2 className="text-2xl lg:text-3xl font-raleway font-bold mb-4">
                         At Global Wave Logistics, we continue to build our worldwide business around a service-based philosophy focused on delivering excellence.
                     </h2>
-                    <h4>
+                    <h4 className='font-raleway text-base lg:text-lgl font-bold mb-4'>
                         We Get The Job Done, Quickly, Reliably, Professionally And Always At A Competitive Price.
                     </h4>
-                    <p className="text-gray-700 text-sm lg:text-base font-roboto leading-10">
+                    <p className="text-gray-700 text-sm lg:text-base font-rubik leading-10">
                         As a multi modal operator, we offer ocean, air and rail freight forwarding services, covering imports and exports to and from the UK, as well as worldwide cross-trades. We also offer a full range of flexible and responsive transport services, from full and part load distribution through to contract distribution and pallet network deliveries.
                     </p>
                 </div>
@@ -73,7 +73,7 @@ function Services() {
 
                     />
 
-                    <h1 className='text-base lg:text-xl font-bold mb-4'>We’ve Designed Our <br /> Service Offering To Match  <br /> Your Requirements</h1>
+                    <h1 className='text-base lg:text-xl font-raleway font-bold mb-4'>We’ve Designed Our <br /> Service Offering To Match  <br /> Your Requirements</h1>
 
                     <span className='border-b-2 border-b-black text-white max-w-xs'>hell</span>
 
@@ -119,7 +119,7 @@ function Services() {
 
 
                 <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
-                    <h2 className="text-2xl lg:text-3xl font-roboto font-bold mb-4">
+                    <h2 className="text-2xl lg:text-3xl font-bold font-raleway mb-4">
                         Sea Freight
                     </h2>
                     <p className="text-gray-700 text-sm lg:text-base font-roboto leading-10">
@@ -159,7 +159,7 @@ function Services() {
 
                     {/* Right Side */}
                     <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
-                        <h2 className="text-2xl lg:text-3xl font-roboto font-bold mb-4">
+                        <h2 className="text-2xl lg:text-3xl font-raleway font-bold mb-4">
                             Air Freight
                         </h2>
                         <p className="text-gray-700 text-sm lg:text-base font-roboto leading-10">
@@ -174,7 +174,7 @@ function Services() {
             <div className='px-6 lg:px-20 mb-4'>
                 <div className='border-t border-t-gray-100 flex flex-col gap-8 lg:flex-row py-10'>
                     <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
-                        <h2 className="text-2xl lg:text-3xl font-roboto font-bold mb-4">
+                        <h2 className="text-2xl lg:text-3xl font-roaleway font-bold mb-4">
                         Road & Rail Distribution
                         </h2>
                         <p className="text-gray-700 text-sm lg:text-base font-roboto leading-10">
@@ -216,10 +216,10 @@ function Services() {
                         className="absolute inset-0 flex flex-col items-center justify-center text-white p-4"
                         data-aos="fade-up"
                     >
-                        <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center ">
+                        <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center font-raleway">
                             Have Any Question?
                         </h1>
-                        <p className="text-base md:text-2-xl font-bold mb-4 text-center max-w-2xl ">
+                        <p className="text-base md:text-2-xl font-bold mb-4 text-center max-w-2xl font-rubik ">
                             Our specialists are on hand to answer any queries you may have or advice on how best to meet your requirements.
                         </p>
 

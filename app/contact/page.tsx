@@ -1,3 +1,9 @@
+'use client'
+
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import ContactSection from '@/components/contact/ContactSection'
 import { PhoneCall } from 'lucide-react'
 import Image from 'next/image'
@@ -9,6 +15,15 @@ config.autoAddCss = false
 
 
 function Contact() {
+
+
+    useEffect(() => {
+        AOS.init({
+          duration: 2000, // Animation duration in ms
+          once: true, // Whether animation should happen only once
+        });
+      }, []);
+
     return (
         <div>
             <div className="relative w-full h-auto overflow-hidden">
@@ -22,9 +37,9 @@ function Contact() {
                     <div className="absolute inset-0 bg-black/50" />
                     <div
                         className="absolute inset-0 flex flex-col items-center justify-center text-white p-4"
-                        data-aos="fade-up"
+                       
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center ">
+                        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center "  data-aos="fade-down">
                             Contact Us
                         </h1>
                     </div>

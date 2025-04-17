@@ -6,10 +6,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faX } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faX, faBars } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { Menu, X } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Button } from './ui/button'
 
@@ -40,7 +39,7 @@ function Header() {
     return () => window.removeEventListener('resize', handleResize)
   }, [isMenuOpen])
   return (
-    <header className='h-[120px]' >
+    <header >
 
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
@@ -55,7 +54,7 @@ function Header() {
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden">
             <Button variant="ghost" size="icon" onClick={toggleMenu}>
-              {isMenuOpen ? <FontAwesomeIcon icon={faX} className='text-2xl text-blue-400' />  : <FontAwesomeIcon icon={faBars} className='text-2xl text-blue-400' /> }
+              {isMenuOpen ? <FontAwesomeIcon icon={faX} className='text-3xl text-black' />  : <FontAwesomeIcon icon={faBars} className='text-3xl text-black' /> }
             </Button>
           </div>
 

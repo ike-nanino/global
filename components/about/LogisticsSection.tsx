@@ -1,14 +1,29 @@
+'use client'
+
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function LogisticsSection() {
+
+       useEffect(() => {
+              AOS.init({
+                duration: 2000, // Animation duration in ms
+                once: true, // Whether animation should happen only once
+              });
+            }, []);
+
+
   return (
     <section className="relative container mx-auto px-4 md:px-8 py-16">
       <div className="flex flex-col lg:flex-row items-start">
         {/* Left side - Text content */}
         <div className="w-full lg:w-1/2 lg:pr-8 z-10">
-          <p className="text-gray-500 uppercase tracking-wider mb-2">WHO WE ARE</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">GLOBAL WAVE LOGISTICS</h2>
+          <p className="text-gray-500 uppercase tracking-wider mb-2 font-open-sans" data-aos="fade-down">WHO WE ARE</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-unica-one" data-aos="fade-up">GLOBAL WAVE LOGISTICS</h2>
           
           <p className="text-gray-800 mb-6">
             We are your dynamic and fast-growing privately-owned supply chain management partner who engages, 
@@ -27,7 +42,7 @@ export default function LogisticsSection() {
             </Link>
 
             <Link href="/services" 
-                  className="bg-pink-700 text-white py-3 px-8 text-center">
+                  className="bg-[#691800] text-white py-3 px-8 text-center">
               Our Services
             </Link>
           </div>

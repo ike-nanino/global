@@ -1,3 +1,9 @@
+'use client'
+
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShip, faPlaneDeparture, faTruck, faWarehouse, faBoxOpen, faTruckRampBox} from '@fortawesome/free-solid-svg-icons'
 import {config} from '@fortawesome/fontawesome-svg-core';
@@ -5,8 +11,18 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false;
 
 function TypesOfServices() {
+
+    
+    useEffect(() => {
+        AOS.init({
+          duration: 2000, // Animation duration in ms
+          once: true, // Whether animation should happen only once
+        });
+      }, []);
+
+
   return (
-    <div className='mx-3 lg:mx-16 px-6 lg:px-32 py-10 bg-gray-300'>
+    <div className='mx-3 lg:mx-16 px-6 lg:px-32 py-10 bg-gray-300' data-aos="fade-up">
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-16'>
             <div className='flex flex-col lg:flex-row items-center lg:items-start gap-4'>

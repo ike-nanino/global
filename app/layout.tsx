@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Poppins, Rajdhani, Roboto } from "next/font/google";
+import { Open_Sans, Oswald, Poppins, Rajdhani, Raleway, Roboto, Rubik, Unica_One, Viga } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 const poppins = Poppins({
@@ -25,6 +26,44 @@ const rajdhani = Rajdhani({
   display: "swap",
 });
 
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+  display: 'swap',
+})
+
+const oswald = Oswald({
+  subsets: ['latin'],
+  variable: '--font-oswald',
+  display: 'swap',
+})
+
+const unicaOne = Unica_One({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-unica-one',
+  display: 'swap',
+})
+
+const viga = Viga({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-viga',
+  display: 'swap',
+})
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway',
+  display: 'swap',
+})
+
+const rubik = Rubik({
+  subsets: ['latin'],
+  variable: '--font-rubik',
+  display: 'swap',
+})
+
 
 
 export const metadata: Metadata = {
@@ -40,11 +79,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${roboto.variable} ${rajdhani.variable} antialiased`}
+        className={`${poppins.variable} ${roboto.variable} ${rajdhani.variable} ${openSans.variable} ${oswald.variable} ${unicaOne.variable} ${viga.variable} ${rubik.variable} ${raleway.variable} antialiased`}
       >
 
         <Header />
         {children}
+
+        <Footer />
       </body>
     </html>
   );
