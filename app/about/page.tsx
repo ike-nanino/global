@@ -63,7 +63,7 @@ function About() {
  </div>
 
 
-            <div className='px-20 py-10'>
+            <div className='px-6 lg:px-20 py-10'>
                 <div className='relative w-full h-[280px] lg:h-[320px] group'>
                     <Image
                         src='/images/seafreight.jpg'
@@ -125,8 +125,8 @@ function About() {
                     {/* Left Side */}
                     <div className="w-full lg:w-1/2">
                     <div>
-                    <FontAwesomeIcon icon={faNetworkWired} className='text-4xl mb-3 text-blue-400' />
-                            <h1 className='text-4xl mb-3'>Supply Chain Management</h1>
+                    <FontAwesomeIcon icon={faNetworkWired} className='text-2xl lg:text-4xl mb-3 text-blue-400' />
+                            <h1 className='text-2xl lg:text-4xl mb-3'>Supply Chain Management</h1>
                             <p>We combine cutting edge technology, expert teams and deep data analytics to give you total control and visibility across your global supply chain. Our approach means we can always help you find a better way.</p>
                         </div>
                     </div>
@@ -134,8 +134,8 @@ function About() {
                     {/* Right Side */}
                     <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
                         <div>
-                        <FontAwesomeIcon icon={faShip} className='text-4xl mb-3 text-blue-400' />
-                            <h1 className='text-4xl mb-3 text-blue-400'>Freight Solutions</h1>
+                        <FontAwesomeIcon icon={faShip} className='text-2xl lg:text-4xl mb-3 text-blue-400' />
+                            <h1 className='tex-2xl lg:text-4xl mb-3 text-blue-400'>Freight Solutions</h1>
                             <p>Unlock the full potential of your supply chain with Global Wave Logistics: air, ocean, rail, and road freight services, expert international customs support, and world-class supply chain technology for unmatched visibility and efficiency.</p>
                         </div>
                     </div>
