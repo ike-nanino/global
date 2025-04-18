@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { Search, Truck, Box, MapPin, Calendar, Clock, Info, CheckCircle } from "lucide-react";
+import { Search, Truck, Box, MapPin, Calendar, Clock, Info, CheckCircle, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { toast } from "sonner"
+
 
 // Dynamic import to avoid SSR issues with the map
 const ShipmentMap = dynamic(() => import("@/components/ShipmentMap"), {
@@ -15,38 +16,74 @@ const ShipmentMap = dynamic(() => import("@/components/ShipmentMap"), {
   loading: () => <div className="h-[500px] w-full bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">Loading map...</div>
 });
 
-// Types for coordinates
+// Types for coordinates and shipment data
 type Coords = {
   lat: number;
   lon: number;
 };
 
-// Mock data for demonstration
-const mockShipmentData = {
-  consignmentNumber: "SHP12345678",
+type TimelineEvent = {
+  location: string;
+  status: string;
+  date: string;
+  time: string;
+  completed: boolean;
+};
+
+type ShipmentData = {
+  consignmentNumber: string;
+  status: string;
+  estimatedDelivery: string;
+  origin: string;
+  destination: string;
+  currentLocation: string;
+  weight: string;
+  carrier: string;
+  type: string;
+  fromCoords: Coords | null;
+  toCoords: Coords | null;
+  currentCoords: Coords | null;
+  timeline: TimelineEvent[];
+};
+
+// Pre-defined coordinates for US locations to avoid API calls that might fail
+const locationCoordinates = {
+  "New York, NY": { lat: 40.7128, lon: -74.0060 },
+  "Chicago, IL": { lat: 41.8781, lon: -87.6298 },
+  "Denver, CO": { lat: 39.7392, lon: -104.9903 },
+  "Las Vegas, NV": { lat: 36.1699, lon: -115.1398 },
+  "Los Angeles, CA": { lat: 34.0522, lon: -118.2437 }
+};
+
+// Valid tracking number patterns for testing
+const validTrackingNumbers = ["USR98765432"];
+
+// Mock data for demonstration - US road route
+const mockShipmentData: ShipmentData = {
+  consignmentNumber: "USR98765432",
   status: "In Transit",
-  estimatedDelivery: "April 15, 2025",
+  estimatedDelivery: "April 24, 2025",
   origin: "New York, NY",
-  destination: "San Francisco, CA",
+  destination: "Los Angeles, CA",
   currentLocation: "Denver, CO",
-  weight: "5.2 kg",
-  carrier: "Express Logistics",
-  type: "Air Freight",
-  fromCoords: null as Coords | null,
-  toCoords: null as Coords | null,
-  currentCoords: null as Coords | null,
+  weight: "320 lbs",
+  carrier: "US Freight Express",
+  type: "Road Freight",
+  fromCoords: null,
+  toCoords: null,
+  currentCoords: null,
   timeline: [
-    { location: "New York, NY", status: "Picked up", date: "April 8, 2025", time: "10:30 AM", completed: true },
-    { location: "Chicago, IL", status: "Arrived at sort facility", date: "April 10, 2025", time: "2:15 PM", completed: true },
-    { location: "Denver, CO", status: "In transit", date: "April 12, 2025", time: "9:45 AM", completed: true },
-    { location: "Las Vegas, NV", status: "Out for delivery", date: "April 14, 2025", time: "8:00 AM", completed: false },
-    { location: "San Francisco, CA", status: "Delivered", date: "April 15, 2025", time: "Expected by 6:00 PM", completed: false }
+    { location: "New York, NY", status: "Picked up", date: "April 15, 2025", time: "8:30 AM", completed: true },
+    { location: "Chicago, IL", status: "Transfer hub processing", date: "April 17, 2025", time: "2:15 PM", completed: true },
+    { location: "Denver, CO", status: "In transit", date: "April 20, 2025", time: "10:45 AM", completed: true },
+    { location: "Las Vegas, NV", status: "Out for delivery", date: "April 22, 2025", time: "7:30 AM", completed: false },
+    { location: "Los Angeles, CA", status: "Expected delivery", date: "April 24, 2025", time: "By 5:00 PM", completed: false }
   ]
 };
 
 export default function TrackingPage() {
   const [trackingNumber, setTrackingNumber] = useState("");
-  const [shipmentData, setShipmentData] = useState(null);
+  const [shipmentData, setShipmentData] = useState<ShipmentData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -58,60 +95,48 @@ export default function TrackingPage() {
     // Simulate API call with setTimeout
     setTimeout(() => {
       if (trackingNumber.trim() === "") {
-        setError("Please enter a valid tracking number");
+        setError("Please enter a tracking number");
         setShipmentData(null);
-      } else {
-        // Use mock data and then fetch coordinates
-        setShipmentData(mockShipmentData);
-        fetchCoordinates();
+        setIsLoading(false);
+        
+        toast.error("Invalid Input", {
+          description: "Please enter a tracking number to search.",
+          duration: 3000,
+        });
+        return;
       }
-      setIsLoading(false);
-    }, 1500);
-  };
-
-  const fetchCoordinates = async () => {
-    try {
-      // Get coordinates for origin, destination, and current location
-      const origin = await getCoords(mockShipmentData.origin);
-      const destination = await getCoords(mockShipmentData.destination);
-      const current = await getCoords(mockShipmentData.currentLocation);
       
-      // Update the shipment data with coordinates
-      setShipmentData(prev => {
-        if (!prev) return null;
-        return {
-          ...prev,
-          fromCoords: origin,
-          toCoords: destination,
-          currentCoords: current
-        };
-      });
+      // Check if tracking number exists in our valid list
+      if (!validTrackingNumbers.includes(trackingNumber.trim())) {
+        setError("");
+        setShipmentData(null);
+        setIsLoading(false);
+        
+        toast.error("Tracking Number Not Found", {
+          description: `We couldn't find any shipment with tracking number: ${trackingNumber}`,
+          duration: 3000,
+        });
+        return;
+      }
       
+      // Use mock data with pre-defined coordinates
+      const data = {
+        ...mockShipmentData,
+        fromCoords: locationCoordinates[mockShipmentData.origin],
+        toCoords: locationCoordinates[mockShipmentData.destination],
+        currentCoords: locationCoordinates[mockShipmentData.currentLocation]
+      };
+      
+      setShipmentData(data);
       setMapLoaded(true);
-    } catch (error) {
-      console.error("Error fetching coordinates:", error);
-      setError("Could not load map coordinates");
-    }
+      setIsLoading(false);
+      
+      toast.success("Shipment Found",{ 
+        description: "Tracking information has been loaded successfully.",
+        duration: 3000,
+      });
+    }, 1000);
   };
-
-  async function getCoords(place) {
-    try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(place)}`
-      );
-      const data = await res.json();
-      if (data.length > 0) {
-        return {
-          lat: parseFloat(data[0].lat),
-          lon: parseFloat(data[0].lon),
-        };
-      }
-      return null;
-    } catch (error) {
-      console.error("Error in getCoords:", error);
-      return null;
-    }
-  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -123,11 +148,11 @@ export default function TrackingPage() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
           <Input
             type="text"
-            placeholder="Enter your tracking number"
+            placeholder="Enter your tracking number (try USR98765432, TEST123456)"
             className="pl-10 w-full"
             value={trackingNumber}
             onChange={(e) => setTrackingNumber(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           />
         </div>
         <Button 
@@ -142,10 +167,24 @@ export default function TrackingPage() {
       {/* Error Message */}
       {error && (
         <Alert variant="destructive" className="mb-6">
-          <Info className="h-4 w-4" />
+          <AlertCircle className="h-4 w-4" />
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
+      )}
+
+      {/* No Results Message */}
+      {!isLoading && !error && trackingNumber && !shipmentData && (
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center mb-6">
+          <div className="flex justify-center mb-4">
+            <Info className="text-gray-400" size={48} />
+          </div>
+          <h2 className="text-xl font-medium mb-2">No Shipment Found</h2>
+          <p className="text-gray-500">
+            We couldn&apos;t find any shipment with tracking number: <strong>{trackingNumber}</strong><br />
+            Please verify the tracking number and try again.
+          </p>
+        </div>
       )}
 
       {/* Shipment Results */}
@@ -215,25 +254,24 @@ export default function TrackingPage() {
 
           {/* Tracking Animation */}
           <Card>
-  <CardHeader>
-    <CardTitle>Shipment Progress</CardTitle>
-  </CardHeader>
-  <CardContent>
-    <div className="relative w-full h-3 rounded-full bg-gray-200 overflow-hidden">
-      {/* Static blue filled progress */}
-      <div className="relative h-full bg-blue-600 rounded-full" style={{ width: "60%" }}>
-        {/* Shimmer animation inside the blue part */}
-        <div className="absolute top-0 left-0 h-full w-full shimmer-overlay"></div>
-      </div>
-    </div>
+            <CardHeader>
+              <CardTitle>Shipment Progress</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="relative w-full h-3 rounded-full bg-gray-200 overflow-hidden">
+                {/* Static blue filled progress */}
+                <div className="relative h-full bg-blue-600 rounded-full" style={{ width: "60%" }}>
+                  {/* Shimmer animation inside the blue part */}
+                  <div className="absolute top-0 left-0 h-full w-full shimmer-overlay"></div>
+                </div>
+              </div>
 
-    <div className="flex justify-between text-sm text-muted-foreground mt-2">
-      <span>New York</span>
-      <span>San Fransisco</span>
-    </div>
-  </CardContent>
-</Card>
-
+              <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                <span>{shipmentData.origin}</span>
+                <span>{shipmentData.destination}</span>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Timeline */}
           <Card>
@@ -271,6 +309,9 @@ export default function TrackingPage() {
           </Card>
         </div>
       )}
+      
+      {/* Toast container */}
+      {/* <Toaster /> */}
     </div>
   );
 }
