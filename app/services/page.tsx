@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthEurope, faCircleRadiation, faRoute } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import Footer from '@/components/Footer'
 config.autoAddCss = false
 
 function Services() {
@@ -230,6 +231,10 @@ function Services() {
                     </div>
                 </div>
             </div>
+
+
+
+            <Footer />
 
         </div>
     )

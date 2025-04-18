@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNetworkWired, faShip } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import Footer from "@/components/Footer";
 config.autoAddCss = false
 
 function About() {
@@ -182,6 +183,10 @@ We Are Custom Clearance <br /> Specialists In The UK
                     </div>
                 </div>
             </div>
+
+
+
+            <Footer />
 
         </div>
     )

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelopeOpen} from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import Footer from "@/components/Footer";
 config.autoAddCss = false
 
 
@@ -118,6 +119,9 @@ function Contact() {
                     <ContactSection />
                 </div>
             </div>
+
+
+            <Footer />
         </div>
     )
 }
