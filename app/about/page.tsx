@@ -12,6 +12,7 @@ import { faNetworkWired, faShip } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Footer from "@/components/Footer";
+import Link from "next/link";
 config.autoAddCss = false
 
 function About() {
@@ -72,10 +73,15 @@ function About() {
     <h1 className='text-4xl lg:text-6xl font-semibold font-unica-one' data-aos="fade-up">We Always Available 24/7</h1>
     <p className='text-lg font-open-sans'>Global Wave Logistics partners with you in understanding your individual needs which enables us to offer you bespoke and optimised global solutions through innovative logistical thinking.</p>
 
+<Link href='/tracking'>
+
     <div className='p-6 bg-green-400 flex text-white gap-2 items-center'>
     <MapPinCheckInside />
         <h1 className=''>Track Your Shipment</h1>
     </div>
+
+    
+</Link>
  </div>
 
 
@@ -170,7 +176,7 @@ function About() {
                     />
                     <div className="absolute inset-0 bg-black/20" />
                     <div
-                        className="absolute inset-0 flex flex-col px-3 lg:px-20 lg:py-20 py-4 text-white"
+                        className="absolute inset-0 flex flex-col px-3 lg:px-20 lg:py-20 py-10 text-white"
                         data-aos="fade-up"
                     >
                         <h1 className="text-2xl md:text-7xl font-bold mb-4 font-viga " data-aos="fade-up">

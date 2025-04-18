@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 function CarlineUp() {
 
@@ -25,9 +26,11 @@ function CarlineUp() {
             <div className='relative z-10'>
 
 
-                <h1 className='text-2xl lg:text-5xl text-left mb-4 font-bold leading-14 text-white ' data-aos="zoom-in">Let Us Take The Headache Out Of All The Complex Logistical Planning And Documentation Handling By Putting Your Cargo In The Hands Of Our Experts</h1>
-
-                <p className='font-rajdhani rounded-md font-bold lg:text-lg p-3 text-black bg-white hover:bg-blue-400 text-center max-w-40' data-aos="fade-up">Learn More</p>
+                <h1 className='text-2xl lg:text-5xl text-left mb-10 font-bold leading-14 text-white ' data-aos="zoom-in">Let Us Take The Headache Out Of All The Complex Logistical Planning And Documentation Handling By Putting Your Cargo In The Hands Of Our Experts</h1>
+                <Link href='/services' className='mt-4'>
+                <p className='font-rajdhani rounded-md hover:text-white duration-300 transition-all font-bold lg:text-lg p-3 text-black bg-white hover:bg-blue-400 text-center max-w-40' data-aos="fade-up">Learn More</p>
+                </Link>
+              
             </div>
         </section>
     )

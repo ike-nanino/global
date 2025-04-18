@@ -4,6 +4,7 @@ import { faEarthEurope, faCircleRadiation, faRoute } from '@fortawesome/free-sol
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Footer from '@/components/Footer'
+import Link from 'next/link'
 config.autoAddCss = false
 
 function Services() {
@@ -42,9 +43,12 @@ function Services() {
                         />
                     </div>
                     <div className=" text-white mt-4 ">
+                        <Link href='/tracking'>
                         <div className='bg-blue-400 max-w-sm text-center p-3'>
                             Shipment Tracking
                         </div>
+
+                        </Link>
                     </div>
                 </div>
 
@@ -224,10 +228,12 @@ function Services() {
                             Our specialists are on hand to answer any queries you may have or advice on how best to meet your requirements.
                         </p>
 
-
-                        <div className='p-6 max-w-2xl bg-blue-500'>
+<Link href='/contact'>
+                        <div className='p-6 max-w-2xl bg-blue-500 hover:bg-blue-700'>
                             Get In Touch With Us
                         </div>
+
+                        </Link>
                     </div>
                 </div>
             </div>

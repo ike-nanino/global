@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 function WhyGlobalWave() {
 
@@ -28,7 +29,11 @@ function WhyGlobalWave() {
                 <h4 className='text-sm lg:text-2xl text-left mb-4 font-medium text-white ' data-aos="fade-up">
 An opportunity to accelerate growth with a streamlined fulfilment solution. Creating powerful partnerships with our clients and helping build lifelong relationships.</h4>
 
-                <p className='font-rajdhani rounded-md font-bold text-sm p-3 text-black bg-white hover:bg-blue-400 text-center max-w-40' data-aos="fade-up">CONTACT US</p>
+
+<Link href='/contact'>
+                <p className='font-rajdhani rounded-md font-bold text-sm p-3 hover:text-white transition-all duration-300 text-black bg-white hover:bg-blue-400 text-center max-w-40' data-aos="fade-up">CONTACT US</p>
+
+                </Link>
             </div>
         </section>
   )

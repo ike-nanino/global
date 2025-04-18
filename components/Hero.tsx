@@ -43,7 +43,10 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{
+            duration: 0.7,
+            opacity: { exit: 0 } // 👈 makes the exit opacity happen instantly
+          }}
           className="absolute inset-0"
         >
           <div 
@@ -83,14 +86,12 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Indicators */}
-      <div className="absolute right-12 top-1/2 -translate-y-1/2">
+     {/* Indicators - Hidden on mobile, visible on md and up */}
+     <div className="hidden md:block absolute right-12 top-1/2 -translate-y-1/2">
         {heroContent.map((_, index) => (
           <div key={index} className="flex items-center mb-6">
-            <span className={`text-white text-opacity-70 mr-2 ${index === current ? 'font-bold' : ''}`}>
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <div className="relative h-0.5 w-10">
+            
+            <div className="relative h-0.5 w-10 mr-2">
               <div className="absolute h-full bg-white bg-opacity-30 w-full"></div>
               {index === current && (
                 <motion.div 
@@ -101,6 +102,10 @@ export default function Hero() {
                 />
               )}
             </div>
+
+            <span className={`text-white text-opacity-70 mr-2 ${index === current ? 'font-bold' : ''}`}>
+              {String(index + 1).padStart(2, '0')}
+            </span>
           </div>
         ))}
       </div>
