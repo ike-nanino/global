@@ -1,5 +1,6 @@
 import CarlineUp from '@/components/CarlineUp'
 import Experienced from '@/components/Experienced'
+import Hero from '@/components/Hero'
 import Icons from '@/components/Icons'
 import OurServices from '@/components/OurServices'
 import TypesOfServices from '@/components/TypesOfServices'
@@ -9,6 +10,7 @@ import WhyGlobalWave from '@/components/WhyGlobalWave'
 function Home() {
   return (
     <main>
+      <Hero />
 
       <Experienced />
 
